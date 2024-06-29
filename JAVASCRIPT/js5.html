@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task5</title>
+    <style>
+      .a {
+        margin-top: 10rem;
+        margin-left: 30rem;
+      }
+      button {
+        margin-left: 10%;
+        margin-top: 10px;
+      }
+      #red{
+        color: red;
+      }
+      td{
+        font-size: x-large;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a">
+      <table>
+        <tr>
+          <td>
+            <label for="name">Name:</label>
+          </td>
+          <td>
+            <input type="text" name="name" id="name" style="border: 3px solid red;"  />
+          </td>
+          <td id="red">This field is required</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="email">Email:</label>
+          </td>
+          <td>
+            <input type="text" name="email" id="email" style="border: 3px solid red;"/>
+          </td>
+          <td id="red">A valid email address is required</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="website">Website:</label>
+          </td>
+          <td>
+            <input type="url"  name="website" id="website" style="border: 3px solid red;"/>
+          </td>
+          <td id="red">A valid url is required</td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="message">Message:</label>
+          </td>
+          <td><textarea name="message" id="message" style="border: 3px solid red; height: 5rem; width: 10rem;"> </textarea></td>
+          <td id="red">This field is required</td>
+        </tr>
+      </table>
+      <button type="submit">Submit</button>
+    </div>
+    <script>
+      const form = document.getElementById('myForm');
+      const errorMessages = document.querySelectorAll('.error-message'); // Get all error message elements
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+      
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const website = document.getElementById('website').value;
+        const message = document.getElementById('message').value;
+      
+        let isValid = true; // Flag to track validation
+      
+        // Clear any previous error messages
+        errorMessages.forEach(message => message.textContent = '');
+      
+        // Form validation with improved error messages
+        if (name === '') {
+          document.getElementById('name').nextElementSibling.textContent = 'Please enter your name.';
+          isValid = false;
+        }
+      
+        if (email === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          document.getElementById('email').nextElementSibling.textContent = 'Please enter a valid email address.';
+          isValid = false;
+        }
+      
+        if (website !== '' && !/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)*$/.test(website)) {
+          document.getElementById('website').nextElementSibling.textContent = 'Please enter a valid website URL (optional).';
+          isValid = false;
+        }
+      
+        if (message === '') {
+          document.getElementById('message').nextElementSibling.textContent = 'Please enter your message.';
+          isValid = false;
+        }
+      
+        // If all fields are valid, submit the form (replace with your form submission logic)
+        if (isValid) {
+          console.log('Form submitted successfully!');
+          // Your form submission logic here (e.g., send data to server using AJAX)
+        }
+      });
+      
+      
+          </script>
+  </body>
+</html>

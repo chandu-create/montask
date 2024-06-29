@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2</title>
+    <style>
+        input{
+            width: 200px;
+            height: 30px;
+        }
+        #answer{
+            width: 200px;
+            height: 30px;
+        }
+        .input{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+         
+        }
+        h2{
+            text-align: center;
+        }
+        #Char{
+            margin-left: 10px;
+        }
+        label{
+            font-weight: 900;
+            font-size: x-large
+        }
+        
+    </style>
+    <body>
+        <h2 style="margin-top: 5%;">Alphabetical Characters</h2>
+        <div class="input">
+            <label for="Char">Enter String:</label>
+            <input type="String" id="Char">
+        </div>
+        <h2 id="Reverse" ></h2>
+
+      <script>
+        var Char = document.getElementById("Char");
+        let reverse = document.getElementById("Reverse");
+        
+         Char.addEventListener("input",() => {
+             let order= Char.value;
+             let changed=order.split("").sort().join("");
+             
+            reverse.innerText = "Reverse of your string is :"+changed;
+             }  );
+      </script>  
+    
+</body>
+</html>

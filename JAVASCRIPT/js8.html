@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task8</title>
+    <style>
+        .form{
+            margin-left: 10rem;
+            margin-right: 10rem;
+            background: linear-gradient(to bottom, #fff9c4, #f8bbd0);
+        }
+        h1{
+            color: blue;
+            text-align: center;
+        }
+        table{
+            margin-left: 13rem;
+            margin-top: 1rem;
+        }
+        td{
+            padding: 6px;
+        }
+        #v{
+           text-align: right;
+           font-weight: bold;
+        }
+        #red{
+            color: red;
+        }
+        button{
+            margin-left: 30rem;
+            border-radius: 15px;
+            padding: 6px;
+            background-color: red;
+            color: white;
+            margin-bottom: 15px;  
+             }
+    </style>
+</head>
+<body>
+    <form class="form">
+    <h1>Registration form</h1>
+    <table>
+        <tr>
+            <td id="v">
+                <label for="firstName">First Name</label>
+            </td>
+            <td>
+                <input type="text" id="name" size="55px" name="firstName">
+            </td>
+            <td id="red">POOR
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="lastName" >Last Name</label>
+            </td>
+            <td>
+                <input type="text" id="name" size="55px" name="lastName">
+            </td>
+            <td id="red">POOR
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="email">Email</label>
+            </td>
+            <td>
+                <input type="email" id="email" size="55px" name="email">
+            </td>
+            <td id="red">POOR
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="password">Password</label>
+            </td>
+            <td>
+                <input type="password" name="password" id="password" size="55px">
+            </td>
+            <td id="red">POOR
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="re-password" >Re-enter Password</label>
+            </td>
+            <td>
+                <input type="password" name="re-password" id="password" size="55px">
+            </td>
+            <td id="red">POOR OR MISMATCH
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v"><label for="gender">Gender</label></td>
+            <td>
+                <input type="radio" id="gender" name="gender" value="Male" checked/>Male <br>
+                <input type="radio" id="gender" name="gender" value="Female">Female
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="age" >Age</label>
+            </td>
+            <td>
+                <input type="number" name="age" id="age" style="width: 25rem;">
+            </td>
+            <td id="red">POOR 
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="phoneNumber">Phone Number</label>
+            </td>
+            <td>
+                <input type="text" name="phoneNumber" id="phoneNumber" size="55px">
+            </td>
+            <td id="red">POOR 
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="address">Address</label>
+            </td>
+            <td>
+                <textarea id="address" name="address" style="height: 6rem;width: 25rem;" ></textarea>
+            </td>
+            <td id="red">POOR</td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label for="state">State</label>
+            </td>
+            <td>
+                <input type="text" name="state" id="state" size="55px">
+            </td>
+            <td id="red">POOR 
+            </td>
+        </tr>
+        
+        <tr>
+            <td id="v">
+                <label for="country">Country</label>
+            </td>
+            <td>
+            <select>
+                <option value="choose your country">Choose your country</option>
+                <option value="India">India</option>
+                <option value="America">America</option>
+                <option value="Australia">Australia</option>
+                <option value="other">Other</option>
+            </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td id="v">
+                <label >Languages Known</label>
+            </td>
+            <td>
+                <input type="checkbox" value="English" >English
+                <input type="checkbox" value="kannada">Kannada
+                <input type="checkbox" value="hindi">Hindi
+                <input type="checkbox" value="telugu">Telugu
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="checkbox" checked>Hereby I declare all the given
+                details are true
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: end;">
+                <p>Log in to
+                    <a href="#">Ethnus</a>
+                    website
+                </p>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">REGISTER</button>
+</form>
+<script>
+    document.getElementById('form').addEventListener('submit', function (e) {
+e.preventDefault();
+
+let isValid = true;
+
+const fields = [
+    { id: 'firstName', name: 'First Name' },
+    { id: 'lastName', name: 'Last Name' },
+    { id: 'email', name: 'Email', pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+    { id: 'password', name: 'Password' },
+    { id: 're-password', name: 'Re-enter Password', match: 'password' },
+    { id: 'age', name: 'Age', type: 'number' },
+    { id: 'phoneNumber', name: 'Phone Number' },
+    { id: 'address', name: 'Address' },
+    { id: 'state', name: 'State' }
+];
+
+fields.forEach(field => {
+    const input = document.getElementById(field.id);
+    const error = document.getElementById();
+    
+    if (!input.value.trim() || (field.pattern && !field.pattern.test(input.value)) || (field.type === 'number' && isNaN(input.value)) || (field.match && input.value !== document.getElementById(field.match).value)) {
+        error.style.display = 'inline';
+        isValid = false;
+    } else {
+        error.style.display = 'none';
+    }
+});
+
+if (isValid) {
+    alert('Registration successful!');
+}
+});
+
+</script>
+</body>
+</html>
+
+
